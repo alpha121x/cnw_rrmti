@@ -5,31 +5,10 @@
 <div class="container-fluid">
     <h1 class="mb-4">Bitumen Extraction Test</h1>
     <form id="extractionForm" method="POST">
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="client" class="form-label">Client:</label>
-                <input type="text" class="form-control" id="client" name="client" placeholder="Enter client name">
-            </div>
-            <div class="col-md-6">
-                <label for="reference_no" class="form-label">Reference No.:</label>
-                <input type="text" class="form-control" id="reference_no" name="reference_no" placeholder="Enter reference number">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="gr" class="form-label">GR #:</label>
-                <input type="text" class="form-control" id="gr" name="gr" placeholder="Enter GR number">
-            </div>
-            <div class="col-md-6">
-                <label for="lab_no" class="form-label">Lab No.:</label>
-                <input type="text" class="form-control" id="lab_no" name="lab_no" placeholder="Enter lab number">
-            </div>
-        </div>
         <div class="mb-3">
             <label for="location" class="form-label">Location:</label>
             <input type="text" class="form-control" id="location" name="location" placeholder="Enter location">
         </div>
-
         <h5 class="mb-3">Sieve Percentages (Passing %)</h5>
         <div class="row mb-3">
             <div class="col-md-3">

@@ -3,10 +3,20 @@ $(document).ready(function () {
   let dtTable; // Variable to hold the DataTable instance
   let currentRowData; // Global variable to hold the current row data for modal/PDF
 
-  // Enable Load Test Form button when a test is selected
-  $("#cmb_test").on("change", function () {
-    const selectedTest = $(this).val();
-    $("#loadTestFormBtn").prop("disabled", selectedTest === "%");
+  // Enable Load Test Form button when required fields are filled
+  $("#testingForm").on("change", function () {
+    const selectedTest = $("#cmb_test").val();
+    const project = $("#project").val().trim();
+    const client = $("#client").val().trim();
+    const ref = $("#ref").val().trim();
+    const gr = $("#gr").val().trim();
+    const lab = $("#lab").val().trim();
+    const receivingDate = $("#receiving_date").val();
+    const testNo = $("#test_no").val().trim();
+    const performerName = $("#performer_name").val().trim();
+
+    const isValid = selectedTest !== "%" && project && client && ref && gr && lab && receivingDate && testNo && performerName;
+    $("#loadTestFormBtn").prop("disabled", !isValid);
   });
 
   // Load test form below the basic info card
@@ -92,6 +102,12 @@ $(document).ready(function () {
               const formData = new FormData(this);
 
               // Add basic info to form data
+              formData.append("project", $("#project").val());
+              formData.append("client", $("#client").val());
+              formData.append("ref", $("#ref").val());
+              formData.append("gr", $("#gr").val());
+              formData.append("lab", $("#lab").val());
+              formData.append("receiving_date", $("#receiving_date").val());
               formData.append("test_no", $("#test_no").val());
               formData.append("performer_name", $("#performer_name").val());
               formData.append("txt_comment", $("#txt_comment").val());
@@ -228,13 +244,13 @@ $(document).ready(function () {
   $("#dtRecords").on("click", ".view-report", function () {
     currentRowData = dtTable.row($(this).parents("tr")).data();
 
-    // Set modal title using test_type from the original data (approximated via test_no context)
-    $("#reportModalLabel").text(`Report: ${currentRowData.test_type}`); // Adjust based on actual test type if available
+    // Set modal title using test_type from the original data
+    $("#reportModalLabel").text(`Report: ${currentRowData.test_type}`);
 
-    // Fill modal with row data (adjust fields as needed based on your modal HTML)
+    // Fill modal with row data
     $("#modal_section").text(currentRowData.section || "");
     $("#modal_sub_section").text(currentRowData.sub_section || "");
-    $("#modal_test").text(currentRowData.test_type || ""); // Placeholder, adjust if test type is available
+    $("#modal_test").text(currentRowData.test_type || "");
     $("#modal_test_no").text(currentRowData.test_no || "");
     $("#modal_performer").text(currentRowData.performer_name || "");
     $("#modal_comment").text(currentRowData.comment || "");
@@ -242,7 +258,7 @@ $(document).ready(function () {
     // Append signature footer before showing modal
     const modalFooter = $("#reportModal .modal-footer1");
     modalFooter.empty(); // Clear existing footer if any
-  modalFooter.append(`
+    modalFooter.append(`
     <div class="row mt-4">
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center">

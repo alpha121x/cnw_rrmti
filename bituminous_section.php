@@ -78,8 +78,40 @@ if (!isset($_SESSION['username'])) {
                         <div class="card-body">
                             <h5 class="card-title">Basic Information</h5>
                             <form id="testingForm" novalidate>
-
-                                <!-- Section + Sub Section (same line) -->
+                                <!-- Project and Client -->
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="project" class="form-label">Project <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="project" name="project" placeholder="Enter project" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="client" class="form-label">Client <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="client" name="client" placeholder="Enter client name" required>
+                                    </div>
+                                </div>
+                                <!-- Ref # and GR # -->
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="ref" class="form-label">Ref # <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="ref" name="ref" placeholder="Enter ref number" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="gr" class="form-label">GR # <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="gr" name="gr" placeholder="Enter GR number" required>
+                                    </div>
+                                </div>
+                                <!-- Lab # and Receiving Date -->
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="lab" class="form-label">Lab # <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="lab" name="lab" placeholder="Enter lab number" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="receiving_date" class="form-label">Lab Receiving Date <span class="text-danger">*</span></label>
+                                        <input type="date" class="form-control" id="receiving_date" name="receiving_date" required>
+                                    </div>
+                                </div>
+                                <!-- Section + Sub Section -->
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="cmb_section" class="form-label">Section <span class="text-danger">*</span></label>
@@ -94,7 +126,6 @@ if (!isset($_SESSION['username'])) {
                                         </select>
                                     </div>
                                 </div>
-
                                 <!-- Test -->
                                 <div class="mb-3">
                                     <label for="cmb_test" class="form-label">Test <span class="text-danger">*</span></label>
@@ -105,25 +136,22 @@ if (!isset($_SESSION['username'])) {
                                         <option value="Bitumen Grade 80-100">Bitumen Grade 80-100</option>
                                     </select>
                                 </div>
-
-                                <!-- Test Number + Performer Name (same line) -->
+                                <!-- Test Number + Performer Name -->
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="test_no" class="form-label">Test Number <span class="text-danger">*</span></label>
-                                        <input type="number" class="form-control" id="test_no" name="test_no" placeholder="Enter test number">
+                                        <input type="number" class="form-control" id="test_no" name="test_no" placeholder="Enter test number" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="performer_name" class="form-label">Performer Name <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="performer_name" name="performer_name" placeholder="Enter performer name">
+                                        <input type="text" class="form-control" id="performer_name" name="performer_name" placeholder="Enter performer name" required>
                                     </div>
                                 </div>
-
                                 <!-- Comments -->
                                 <div class="mb-3">
                                     <label for="txt_comment" class="form-label">Comments/Remarks</label>
                                     <textarea class="form-control" rows="3" placeholder="Leave a comment here" id="txt_comment" name="txt_comment"></textarea>
                                 </div>
-
                                 <!-- Buttons -->
                                 <div class="d-flex justify-content-end">
                                     <button type="button" id="loadTestFormBtn" class="btn btn-primary btn-primary-custom" disabled>
