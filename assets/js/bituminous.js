@@ -158,37 +158,38 @@ $(document).ready(function() {
     });
 
     // Load test records
-    function loadTestRecords() {
-        $.ajax({
-            url: 'get_bituminous_records.php',
-            type: 'GET',
-            success: function(response) {
-                const records = response.records || [];
-                const tbody = $('#dtRecords tbody');
-                tbody.empty();
-                records.forEach(record => {
-                    tbody.append(`
-                        <tr>
-                            <td>${record.section || ''}</td>
-                            <td>${record.sub_section || ''}</td>
-                            <td>${record.test_no || ''}</td>
-                            <td>${record.performer_name || ''}</td>
-                            <td>${record.status || 'N/A'}</td>
-                            <td>${record.comment || ''}</td>
-                            <td><a href="view_report.php?id=${record.id || ''}" class="btn btn-info btn-sm">View</a></td>
-                        </tr>
-                    `);
-                });
-                if ($.fn.DataTable.isDataTable('#dtRecords')) {
-                    $('#dtRecords').DataTable().destroy();
-                }
-                $('#dtRecords').DataTable();
-            },
-            error: function() {
-                alert('Failed to load test records.');
+    // In assets/js/bituminous.js
+function loadTestRecords() {
+    $.ajax({
+        url: 'services/get_bituminous_records.php',
+        type: 'GET',
+        success: function(response) {
+            const records = response.records || [];
+            const tbody = $('#dtRecords tbody');
+            tbody.empty();
+            records.forEach(record => {
+                tbody.append(`
+                    <tr>
+                        <td>${record.section || ''}</td>
+                        <td>${record.sub_section || ''}</td>
+                        <td>${record.test_no || ''}</td>
+                        <td>${record.performer_name || ''}</td>
+                        <td>${record.status || 'N/A'}</td>
+                        <td>${record.comment || ''}</td>
+                        <td><a href="view_report.php?id=${record.id || ''}" class="btn btn-info btn-sm">View</a></td>
+                    </tr>
+                `);
+            });
+            if ($.fn.DataTable.isDataTable('#dtRecords')) {
+                $('#dtRecords').DataTable().destroy();
             }
-        });
-    }
+            $('#dtRecords').DataTable();
+        },
+        error: function() {
+            alert('Failed to load test records.');
+        }
+    });
+}
 
     // Initial load of records
     loadTestRecords();
