@@ -123,7 +123,7 @@ $(document).ready(function() {
     // Unified submit wrapper for all Bituminous tests
     window.submitBituminousForm = function(formData, testType) {
         return new Promise((resolve, reject) => {
-            fetch('process_bituminous.php', {
+            fetch('services/process_bituminous.php', {
                 method: 'POST',
                 body: formData
             })
