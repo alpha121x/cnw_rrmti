@@ -1,0 +1,190 @@
+@media (min-width: 1200px) {
+    .logo {
+        width: 650px;
+    }
+}
+
+.logo span {
+    font-size: 20px;
+}
+
+.header {
+    height: 50px;
+}
+
+/*---------- card section ----------*/
+:root {
+    --card-radius: 1rem;
+    --card-shadow: 0 10px 30px rgba(0,0,0,.08);
+    --card-hover-shadow: 0 18px 40px rgba(0,0,0,.15);
+    --accent: #002971;
+    --green: #12724E;
+}
+
+body {
+    background: #e3e3e3;
+}
+
+.body-custom{
+    background: linear-gradient(135deg, #25c58a, #0346b4);
+    background-repeat: no-repeat;   /* prevent repetition */
+    background-attachment: fixed;   /* makes gradient stay fixed when scrolling */
+    background-size: cover;         /* covers full viewport */
+    min-height: 100vh;              /* ensure full screen coverage */
+}
+/* ----------- CARD BASE ----------- */
+.card{
+    box-shadow: rgba(32, 48, 79, 0.5) 0 7px 29px;
+}
+.card-pro {
+    border: 1px solid #e0e0e0;
+    border-radius: 1rem;
+    background: #dcdcdc;
+    box-shadow: rgba(32, 48, 79, 0.5) 0 7px 10px;
+    transition: all .3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.card-pro:hover {
+    background: linear-gradient(135deg, #ffffff, #f8fbff); /* light subtle glow */
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0,0,0,.12);
+    border-color: #cfd8ff;
+}
+
+/* ----------- TOP BAR ----------- */
+.card-topbar {
+    height: 84px;
+    background: #e8e8e8;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+/* ----------- LOGO CIRCLE ----------- */
+.logo-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #4154f1, #002971);
+    color: #fff;
+    font-size: 1.75rem;
+    margin: -36px auto 0;
+    box-shadow: 0 6px 16px rgba(65,84,241,.3);
+    transition: all .3s ease;
+}
+
+.bg-custom{
+    background: linear-gradient(135deg, #187c5a, #25c58a);
+}
+
+.card-pro:hover .logo-circle {
+    box-shadow: 0 10px 22px rgba(65,84,241,.45);
+    transform: scale(1.07);
+}
+
+/* ----------- TEXT ----------- */
+.card-title {
+    color: #002971;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+
+/*---------- back-to-top ----------*/
+.back-to-top {
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    right: 15px;
+    bottom: 15px;
+    z-index: 99999;
+    background: #002971;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    transition: all 0.4s;
+    color: #fff;
+    font-size: 20px;
+}
+
+.back-to-top svg {
+    width: 20px;
+    height: 20px;
+}
+
+.back-to-top:hover {
+    background: #0044bb;
+    color: #fff;
+}
+
+/*---------- text colors ----------*/
+.h3-blue {
+    color: var(--accent);
+}
+
+.h4-blue {
+    color: var(--accent);
+}
+
+/*---------- datatable ----------*/
+/* Reduce font size in DataTable */
+#dtRecords_wrapper,
+#dtRecords_wrapper table.dataTable,
+#dtRecords_wrapper .dataTables_info,
+#dtRecords_wrapper .dataTables_paginate,
+#dtRecords_wrapper .dataTables_length,
+#dtRecords_wrapper .dataTables_filter {
+    font-size: 0.8rem;
+}
+
+/* Optional: also shrink table cells */
+#dtRecords_wrapper table.dataTable th,
+#dtRecords_wrapper table.dataTable td {
+    font-size: 0.8rem;
+    padding: 6px 8px;
+}
+/* Pagination font size fix */
+#dtRecords_wrapper .dataTables_paginate .pagination .page-link {
+    font-size: 0.8rem;
+    padding: 2px 8px;  /
+}
+
+/*---custom button---*/
+.btn-primary-custom{
+    background: linear-gradient(135deg, #4154f1, #002971);
+}
+
+/*----profile tabs---*/
+.nav-tabs-bordered .nav-link.active
+{
+    background-color: #002971;
+    color: #e1f1f8;
+    border-bottom: 5px solid #25c58a;
+}
+
+.tab-content{
+    border: 1px solid #002971;
+    padding: 20px;
+}
+
+.loader {
+    display: none; /* 👈 hide loader by default */
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('../img/loader.gif') 50% 50% no-repeat rgb(249,249,249);
+}
+
+
+
+
+
+
+

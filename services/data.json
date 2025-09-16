@@ -1,0 +1,138 @@
+[
+    {
+        "section": "Aggregate Section",
+        "sub_section": "Select Sub Section",
+        "test": "Sampling (AASHTO T-2-84)",
+        "test_no": "123",
+        "performer_name": "Asim",
+        "comment": "testing sample"
+    },
+    {
+        "section": "Aggregate Section",
+        "sub_section": "Select Sub Section",
+        "test": "Sampling (AASHTO T-2-84)",
+        "test_no": "123",
+        "performer_name": "Asim",
+        "comment": "testing remarks"
+    },
+    {
+        "section": "Aggregate Section",
+        "sub_section": "-",
+        "test": "Sampling (AASHTO T-2-84)",
+        "test_no": "AG-001",
+        "performer_name": "Ali Raza",
+        "comment": "Samples collected from site stockpile."
+    },
+    {
+        "section": "Aggregate Section",
+        "sub_section": "-",
+        "test": "Particle Size Distribution\/Gradation (AASHTO T-27-06\/C.136-05)",
+        "test_no": "AG-002",
+        "performer_name": "Sara Ahmed",
+        "comment": "Gradation within specified limits."
+    },
+    {
+        "section": "Aggregate Section",
+        "sub_section": "-",
+        "test": "Los Angeles Abrasion Test (AASHTO T-96\/C131)",
+        "test_no": "AG-003",
+        "performer_name": "Bilal Khan",
+        "comment": "Abrasion value 28%, acceptable for base course."
+    },
+    {
+        "section": "Aggregate Section",
+        "sub_section": "-",
+        "test": "Specific Gravity & Water Absorption (Fines) (AASHTO T-84)",
+        "test_no": "AG-004",
+        "performer_name": "Nida Khan",
+        "comment": "Fines absorption measured at 2.1%."
+    },
+    {
+        "section": "Aggregate Section",
+        "sub_section": "-",
+        "test": "Particle Shape Test\/Flakiness and Elongation (BS 812.105.1&2)",
+        "test_no": "AG-005",
+        "performer_name": "Usman Tariq",
+        "comment": "Flakiness index = 12%, within limits."
+    },
+    {
+        "section": "Aggregate Section",
+        "sub_section": "-",
+        "test": "Modified Proctor, Maximum Dry Density Test and OMC (AASHTO T-180)",
+        "test_no": "AG-006",
+        "performer_name": "Hina Fatima",
+        "comment": "MDD = 2.12 g\/cm\u00b3, OMC = 6.5%."
+    },
+    {
+        "section": "Aggregate Section",
+        "sub_section": "-",
+        "test": "California Bearing Ratio (CBR), Soaked & Un-Soaked (AASHTO T-193)",
+        "test_no": "AG-007",
+        "performer_name": "Imran Ali",
+        "comment": "Soaked CBR = 7.5%, Un-soaked = 10%."
+    },
+    {
+        "section": "Aggregate Section",
+        "sub_section": "-",
+        "test": "Sand Equivalent of Fine Aggregate (AASHTO T-176)",
+        "test_no": "AG-008",
+        "performer_name": "Waseem Akhtar",
+        "comment": "Sand equivalent = 72%, meets specification."
+    },
+    {
+        "section": "Aggregate Section",
+        "sub_section": "-",
+        "test": "Impact Value of Aggregate (BS 812)",
+        "test_no": "AG-009",
+        "performer_name": "Zeeshan Haider",
+        "comment": "Impact value = 18%, suitable for base course."
+    },
+    {
+        "section": "Aggregate Section",
+        "sub_section": "-",
+        "test": "Crushing Strength of Aggregate (BS 812)",
+        "test_no": "AG-010",
+        "performer_name": "Ali Raza",
+        "comment": "Crushing strength = 26%, acceptable."
+    },
+    {
+        "section": "Aggregate Section",
+        "sub_section": "-",
+        "test": "Sodium Sulphate Soundness Test (AASHTO T-104)",
+        "test_no": "AG-011",
+        "performer_name": "Sara Ahmed",
+        "comment": "Weight loss after cycles = 7%, within tolerance."
+    },
+    {
+        "section": "Aggregate Section",
+        "sub_section": "-",
+        "test": "Relative Density of Non-Cohesive Soil (D-4253\/4254)",
+        "test_no": "AG-012",
+        "performer_name": "Bilal Khan",
+        "comment": "Relative density = 68%."
+    },
+    {
+        "section": "Aggregate Section",
+        "sub_section": "-",
+        "test": "Unit Weight & Voids (AASHTO T-19-88)",
+        "test_no": "AG-013",
+        "performer_name": "Hina Fatima",
+        "comment": "Bulk density = 1520 kg\/m\u00b3, voids = 36%."
+    },
+    {
+        "section": "Aggregate Section",
+        "sub_section": "-",
+        "test": "Fineness Modulus (M6-87)",
+        "test_no": "AG-014",
+        "performer_name": "Usman Tariq",
+        "comment": "Fineness modulus = 2.75."
+    },
+    {
+        "section": "Aggregate Section",
+        "sub_section": "-",
+        "test": "Clay Lumps & Friable Particles (AASHTO T-112)",
+        "test_no": "AG-015",
+        "performer_name": "Zeeshan Haider",
+        "comment": "Clay lumps = 0.8%, acceptable."
+    }
+]
