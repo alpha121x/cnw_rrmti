@@ -240,35 +240,32 @@ $(document).ready(function () {
     $("#modal_comment").text(currentRowData.comment || "");
 
     // Append signature footer before showing modal
-    const modalFooter = $("#reportModal .modal-footer");
+    const modalFooter = $("#reportModal .modal-footer1");
     modalFooter.empty(); // Clear existing footer if any
-    modalFooter.append(`
-            <div class="row mt-4">
-                <div class="col-9">
-                    <div class="d-flex justify-content-between">
-                        <div class="text-center">
-                            <div class="fw-bold">Laboratory Assistant</div>
-                            <div class="small-note">(Signature)</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="fw-bold">Research Assistant</div>
-                            <div class="small-note">(Signature)</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="fw-bold">Junior Research Officer</div>
-                            <div class="small-note">(Signature)</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="fw-bold">Senior Research Officer</div>
-                            <div class="small-note">(Signature)</div>
-                        </div>
-                    </div>
+  modalFooter.append(`
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-center flex-fill">
+                    <div class="fw-bold">Laboratory Assistant</div>
+                    <div class="small-note">(Signature)</div>
                 </div>
-                <div class="col-3 text-end">
-                    <div class="small-note">Form code: RRMTI-01</div>
+                <div class="text-center flex-fill">
+                    <div class="fw-bold">Research Assistant</div>
+                    <div class="small-note">(Signature)</div>
+                </div>
+                <div class="text-center flex-fill">
+                    <div class="fw-bold">Junior Research Officer</div>
+                    <div class="small-note">(Signature)</div>
+                </div>
+                <div class="text-center flex-fill">
+                    <div class="fw-bold">Senior Research Officer</div>
+                    <div class="small-note">(Signature)</div>
                 </div>
             </div>
-        `);
+        </div>
+    </div>
+`);
 
     // Show modal
     $("#reportModal").modal("show");

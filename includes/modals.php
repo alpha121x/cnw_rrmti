@@ -1,6 +1,6 @@
 <!-- Report Modal -->
 <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header px-3 py-2">
                 <h5 class="modal-title" id="reportModalLabel">Test Report</h5>
@@ -21,7 +21,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer1 mb-4">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     <i class="fa-duotone fa-solid fa-circle-xmark"></i>&nbsp;Close
                 </button>
