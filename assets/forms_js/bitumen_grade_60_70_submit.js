@@ -3,21 +3,22 @@
 
 function submitGrade6070Form(form) {
     const formData = new FormData(form);
-    fetch('process_grade_60_70.php', {
+    formData.append('test_type', 'Bitumen Grade 60-70'); // Add test type for process.php
+    fetch('services/process_bituminous.php', {
         method: 'POST',
         body: formData
     })
     .then(response => response.json())
     .then(data => {
-        if (data.success) {
-            alert('Form submitted successfully!');
+        if (data.status === "success") {
+            alert(data.message);
             form.reset();
         } else {
-            alert('Submission failed: ' + data.error);
+            alert(data.message);
         }
     })
     .catch(error => {
-        alert('Error: ' + error);
+        alert('Error: ' + error.message);
     });
     return false;
 }

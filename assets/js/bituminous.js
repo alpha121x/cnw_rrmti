@@ -50,65 +50,68 @@ $(document).ready(function() {
                 // Remove existing scripts to avoid conflicts
                 $('script[src^="assets/forms_js/"]').remove();
 
-                // Load scripts dynamically
-                scriptUrls.forEach(function(src) {
-                    if (!$('script[src="' + src + '"]').length) {
-                        const script = document.createElement('script');
-                        script.src = src;
-                        script.onload = function() {
-                            console.log(`${src} loaded`);
-                        };
-                        script.onerror = function() {
-                            console.error(`Failed to load ${src}`);
-                        };
-                        document.head.appendChild(script);
-                    }
+                // Load scripts dynamically with promise-like handling
+                const scriptPromises = scriptUrls.map(src => {
+                    return new Promise((resolve, reject) => {
+                        if (!$('script[src="' + src + '"]').length) {
+                            const script = document.createElement('script');
+                            script.src = src;
+                            script.onload = () => {
+                                console.log(`${src} loaded`);
+                                resolve();
+                            };
+                            script.onerror = () => {
+                                console.error(`Failed to load ${src}`);
+                                reject(new Error(`Failed to load ${src}`));
+                            };
+                            document.head.appendChild(script);
+                        } else {
+                            resolve();
+                        }
+                    });
                 });
 
-                // Attach submit event to the form (override to include basic info)
-                const $form = $('#testFormContent form');
-                $form.off('submit').on('submit', function(e) {
-                    e.preventDefault();
-                    const formData = new FormData(this);
+                Promise.all(scriptPromises).then(() => {
+                    // Attach submit event to the form (override to include basic info)
+                    const $form = $('#testFormContent form');
+                    $form.off('submit').on('submit', function(e) {
+                        e.preventDefault();
+                        const formData = new FormData(this);
 
-                    // Add basic info to form data
-                    formData.append('test_no', $('#test_no').val());
-                    formData.append('performer_name', $('#performer_name').val());
-                    formData.append('txt_comment', $('#txt_comment').val());
-                    formData.append('section', 'Bituminous');
-                    formData.append('sub_section', ''); // Empty for now
+                        // Add basic info to form data
+                        formData.append('test_no', $('#test_no').val());
+                        formData.append('performer_name', $('#performer_name').val());
+                        formData.append('txt_comment', $('#txt_comment').val());
+                        formData.append('section', 'Bituminous');
+                        formData.append('sub_section', ''); // Empty for now
+                        formData.append('test_type', selectedTest); // Add test type for backend
 
-                    // Call the specific validation function first
-                    let isValid = true;
-                    if (selectedTest === 'Bitumen Extraction' && typeof validateExtraction === 'function') {
-                        isValid = validateExtraction();
-                    } else if (selectedTest === 'Bitumen Grade 60-70' && typeof validateGrade6070 === 'function') {
-                        isValid = validateGrade6070();
-                    } else if (selectedTest === 'Bitumen Grade 80-100' && typeof validateGrade80100 === 'function') {
-                        isValid = validateGrade80100();
-                    }
-
-                    if (!isValid) return;
-
-                    // Call the specific submit function, but override with custom wrappers
-                    let submitSuccess = false;
-                    if (selectedTest === 'Bitumen Extraction' && typeof submitExtractionFormCustom === 'function') {
-                        submitExtractionFormCustom(formData);
-                    } else if (selectedTest === 'Bitumen Grade 60-70' && typeof submitGrade6070FormCustom === 'function') {
-                        submitGrade6070FormCustom(formData);
-                    } else if (selectedTest === 'Bitumen Grade 80-100' && typeof submitGrade80100FormCustom === 'function') {
-                        submitGrade80100FormCustom(formData);
-                    }
-
-                    // Check submitSuccess after async operation (simplified; in practice, use promises)
-                    setTimeout(() => {
-                        if (window.submitSuccess) {
-                            $('#testingForm')[0].reset();
-                            $('#testFormContent').empty();
-                            $('#testFormCard').hide();
-                            loadTestRecords();
+                        // Call the specific validation function first
+                        let isValid = true;
+                        if (selectedTest === 'Bitumen Extraction' && typeof validateExtraction === 'function') {
+                            isValid = validateExtraction();
+                        } else if (selectedTest === 'Bitumen Grade 60-70' && typeof validateGrade6070 === 'function') {
+                            isValid = validateGrade6070();
+                        } else if (selectedTest === 'Bitumen Grade 80-100' && typeof validateGrade80100 === 'function') {
+                            isValid = validateGrade80100();
                         }
-                    }, 100); // Delay to allow async response
+
+                        if (!isValid) return;
+
+                        // Submit using a unified custom wrapper
+                        submitBituminousForm(formData, selectedTest).then(() => {
+                            if (window.submitSuccess) {
+                                $('#testingForm')[0].reset();
+                                $('#testFormContent').empty();
+                                $('#testFormCard').hide();
+                                loadTestRecords();
+                            }
+                        }).catch(error => {
+                            alert('Submission error: ' + error.message);
+                        });
+                    });
+                }).catch(error => {
+                    alert('Failed to load required scripts: ' + error.message);
                 });
             },
             error: function() {
@@ -117,67 +120,30 @@ $(document).ready(function() {
         });
     });
 
-    // Custom submit wrappers to include basic info and handle response
-    window.submitExtractionFormCustom = function(formData) {
-        fetch('process_extraction.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Form submitted successfully!');
-                window.submitSuccess = true;
-            } else {
-                alert('Submission failed: ' + data.error);
+    // Unified submit wrapper for all Bituminous tests
+    window.submitBituminousForm = function(formData, testType) {
+        return new Promise((resolve, reject) => {
+            fetch('process_bituminous.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    alert(data.message);
+                    window.submitSuccess = true;
+                    resolve();
+                } else {
+                    alert(data.message);
+                    window.submitSuccess = false;
+                    reject(new Error(data.message));
+                }
+            })
+            .catch(error => {
+                alert('Error: ' + error.message);
                 window.submitSuccess = false;
-            }
-        })
-        .catch(error => {
-            alert('Error: ' + error);
-            window.submitSuccess = false;
-        });
-    };
-
-    window.submitGrade6070FormCustom = function(formData) {
-        fetch('process_grade_60_70.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Form submitted successfully!');
-                window.submitSuccess = true;
-            } else {
-                alert('Submission failed: ' + data.error);
-                window.submitSuccess = false;
-            }
-        })
-        .catch(error => {
-            alert('Error: ' + error);
-            window.submitSuccess = false;
-        });
-    };
-
-    window.submitGrade80100FormCustom = function(formData) {
-        fetch('process_grade_80_100.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Form submitted successfully!');
-                window.submitSuccess = true;
-            } else {
-                alert('Submission failed: ' + data.error);
-                window.submitSuccess = false;
-            }
-        })
-        .catch(error => {
-            alert('Error: ' + error);
-            window.submitSuccess = false;
+                reject(error);
+            });
         });
     };
 
@@ -197,19 +163,19 @@ $(document).ready(function() {
             url: 'get_bituminous_records.php',
             type: 'GET',
             success: function(response) {
-                const records = response.records;
+                const records = response.records || [];
                 const tbody = $('#dtRecords tbody');
                 tbody.empty();
                 records.forEach(record => {
                     tbody.append(`
                         <tr>
-                            <td>${record.section}</td>
-                            <td>${record.sub_section}</td>
-                            <td>${record.test_no}</td>
-                            <td>${record.performer_name}</td>
-                            <td>${record.status}</td>
-                            <td>${record.comment}</td>
-                            <td><a href="view_report.php?id=${record.id}" class="btn btn-info btn-sm">View</a></td>
+                            <td>${record.section || ''}</td>
+                            <td>${record.sub_section || ''}</td>
+                            <td>${record.test_no || ''}</td>
+                            <td>${record.performer_name || ''}</td>
+                            <td>${record.status || 'N/A'}</td>
+                            <td>${record.comment || ''}</td>
+                            <td><a href="view_report.php?id=${record.id || ''}" class="btn btn-info btn-sm">View</a></td>
                         </tr>
                     `);
                 });
@@ -217,6 +183,9 @@ $(document).ready(function() {
                     $('#dtRecords').DataTable().destroy();
                 }
                 $('#dtRecords').DataTable();
+            },
+            error: function() {
+                alert('Failed to load test records.');
             }
         });
     }
