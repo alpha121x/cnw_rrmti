@@ -81,7 +81,7 @@ if (!isset($_SESSION['username'])) {
 
                 <!-- Card 2 -->
                 <div class="col">
-                    <a href="bitumen_test_result_form.php" class="card card-pro h-100 text-center">
+                    <a href="bituminous_section.php" class="card card-pro h-100 text-center">
                         <div class="card-topbar"></div>
                         <div class="logo-circle"><i class="fa-duotone fa-solid fa-road"></i></div>
                         <div class="card-body">
