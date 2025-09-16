@@ -1,5 +1,8 @@
 // assets/js/bituminous.js
 $(document).ready(function() {
+    let dtTable; // Variable to hold the DataTable instance
+    let currentRowData; // Global variable to hold the current row data for modal/PDF
+
     // Enable Load Test Form button when a test is selected
     $('#cmb_test').on('change', function() {
         const selectedTest = $(this).val();
@@ -104,7 +107,7 @@ $(document).ready(function() {
                                 $('#testingForm')[0].reset();
                                 $('#testFormContent').empty();
                                 $('#testFormCard').hide();
-                                loadTestRecords();
+                                dtTable.ajax.reload(); // Reload DataTable after successful submission
                             }
                         }).catch(error => {
                             alert('Submission error: ' + error.message);
@@ -157,40 +160,89 @@ $(document).ready(function() {
         $('script[src^="assets/forms_js/"]').remove();
     });
 
-    // Load test records
-    // In assets/js/bituminous.js
-function loadTestRecords() {
-    $.ajax({
-        url: 'services/get_bituminous_records.php',
-        type: 'GET',
-        success: function(response) {
-            const records = response.records || [];
-            const tbody = $('#dtRecords tbody');
-            tbody.empty();
-            records.forEach(record => {
-                tbody.append(`
-                    <tr>
-                        <td>${record.section || ''}</td>
-                        <td>${record.sub_section || ''}</td>
-                        <td>${record.test_no || ''}</td>
-                        <td>${record.performer_name || ''}</td>
-                        <td>${record.status || 'N/A'}</td>
-                        <td>${record.comment || ''}</td>
-                        <td><a href="view_report.php?id=${record.id || ''}" class="btn btn-info btn-sm">View</a></td>
-                    </tr>
-                `);
-            });
-            if ($.fn.DataTable.isDataTable('#dtRecords')) {
-                $('#dtRecords').DataTable().destroy();
-            }
-            $('#dtRecords').DataTable();
+    // Initialize DataTable with AJAX
+    dtTable = $("#dtRecords").DataTable({
+        ajax: {
+            url: 'services/get_bituminous_records.php', // Fetch filtered Bituminous records
+            dataSrc: 'records' // Data source key from the JSON response
         },
-        error: function() {
-            alert('Failed to load test records.');
-        }
+        columns: [
+            { data: "section" },
+            { data: "sub_section" },
+            { data: "test_no" }, // Using test_no as a proxy for test identifier
+            { data: "performer_name" },
+            {
+                data: "status",
+                render: function (data) {
+                    if (data === "Completed") {
+                        return `<span class="badge bg-success">Completed</span>`;
+                    } else if (data === "In Process") {
+                        return `<span class="badge bg-info text-dark">In Process</span>`;
+                    } else {
+                        return `<span class="badge bg-warning text-dark">Pending</span>`;
+                    }
+                }
+            },
+            { data: "comment" },
+            {
+                data: null, // Render a button
+                orderable: false,
+                searchable: false,
+                render: function (data, type, row) {
+                    return `
+                        <div class="text-center">
+                            <button class="btn btn-sm btn-outline-primary view-report" data-id="${row.id}">
+                                <i class="fa-duotone fa-solid fa-eye"></i>
+                            </button>
+                        </div>
+                    `;
+                }
+            }
+        ],
+        order: [[2, "asc"]] // Sort by test_no (column index 2) ascending
     });
-}
 
-    // Initial load of records
-    loadTestRecords();
+    // Handle View Report button click
+    $('#dtRecords').on('click', '.view-report', function () {
+        currentRowData = dtTable.row($(this).parents('tr')).data();
+
+        // Set modal title using test_type from the original data (approximated via test_no context)
+        $('#reportModalLabel').text(`Report: ${currentRowData.test_no}`); // Adjust based on actual test type if available
+
+        // Fill modal with row data (adjust fields as needed based on your modal HTML)
+        $('#modal_section').text(currentRowData.section || '');
+        $('#modal_sub_section').text(currentRowData.sub_section || '');
+        $('#modal_test').text(currentRowData.test_type || ''); // Placeholder, adjust if test type is available
+        $('#modal_test_no').text(currentRowData.test_no || '');
+        $('#modal_performer').text(currentRowData.performer_name || '');
+        $('#modal_comment').text(currentRowData.comment || '');
+
+        // Show modal
+        $('#reportModal').modal('show');
+    });
+
+    // Handle Make PDF button click
+    $('#btnMakePDF').on('click', function () {
+        if (!currentRowData) return;
+
+        $.ajax({
+            url: "services/generate_report.php",
+            type: "POST",
+            data: JSON.stringify(currentRowData),
+            contentType: "application/json",
+            xhrFields: {
+                responseType: 'blob' // important
+            },
+            success: function (data) {
+                let blob = new Blob([data], { type: "application/pdf" });
+                let url = window.URL.createObjectURL(blob);
+                window.open(url, "_blank"); // open PDF in new tab
+            },
+            error: function () {
+                alert("Error generating PDF!");
+            }
+        });
+    });
+
+    // Initial load of records is handled by DataTable initialization
 });

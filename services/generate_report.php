@@ -105,7 +105,7 @@ $html = '
     </tr>
     <tr>
         <th>Test</th>
-        <td>' . htmlspecialchars($data["test"]) . '</td>
+        <td>' . htmlspecialchars($data["test_type"]) . '</td>
     </tr>
     <tr>
         <th>Test Number</th>
