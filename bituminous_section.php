@@ -73,10 +73,10 @@ if (!isset($_SESSION['username'])) {
         </div>
         <div class="container py-4">
             <div class="row justify-content-center">
-                <div class="col-lg-9">
-                    <div class="card" style="">
+                <div class="col-lg-12">
+                    <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Add New Testing</h5>
+                            <h5 class="card-title">Basic Information</h5>
                             <form id="testingForm" novalidate>
 
                                 <!-- Section + Sub Section (same line) -->
@@ -89,20 +89,20 @@ if (!isset($_SESSION['username'])) {
                                     </div>
                                     <div class="col-md-6">
                                         <label for="cmb_sub_section" class="form-label">Sub Section <span class="text-danger">*</span></label>
-                                        <select class="form-select" id="cmb_sub_section" name="cmb_sub_section">
+                                        <select class="form-select" id="cmb_sub_section" name="cmb_sub_section" disabled>
                                             <option value="%">Select Sub Section</option>
-                                            <option value="Bitumen Extraction">Bitumen Extraction</option>
-                                            <option value="Bitumen Grade 60-70">Bitumen Grade 60-70</option>
-                                            <option value="Bitumen Grade 80-100">Bitumen Grade 80-100</option>
                                         </select>
                                     </div>
                                 </div>
 
-                                <!-- Test (disabled as sub-section determines test) -->
-                                <div class="mb-3" style="display: none;">
+                                <!-- Test -->
+                                <div class="mb-3">
                                     <label for="cmb_test" class="form-label">Test <span class="text-danger">*</span></label>
                                     <select class="form-select select-fill" id="cmb_test" name="cmb_test" data-live-search="true" data-size="3">
                                         <option value="%">Select Test</option>
+                                        <option value="Bitumen Extraction">Bitumen Extraction</option>
+                                        <option value="Bitumen Grade 60-70">Bitumen Grade 60-70</option>
+                                        <option value="Bitumen Grade 80-100">Bitumen Grade 80-100</option>
                                     </select>
                                 </div>
 
@@ -121,18 +121,30 @@ if (!isset($_SESSION['username'])) {
                                 <!-- Comments -->
                                 <div class="mb-3">
                                     <label for="txt_comment" class="form-label">Comments/Remarks</label>
-                                    <textarea class="form-control" placeholder="Leave a comment here" id="txt_comment" name="txt_comment"></textarea>
+                                    <textarea class="form-control" rows="3" placeholder="Leave a comment here" id="txt_comment" name="txt_comment"></textarea>
                                 </div>
 
                                 <!-- Buttons -->
                                 <div class="d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary btn-primary-custom">
-                                        <i class="fa-duotone fa-solid fa-file-lines"></i>&nbsp;Add Test</button>
+                                    <button type="button" id="loadTestFormBtn" class="btn btn-primary btn-primary-custom" disabled>
+                                        <i class="fa-duotone fa-solid fa-file-lines"></i>&nbsp;Load Test Form</button>
                                     <button type="reset" class="btn btn-secondary ms-2">
                                         <i class="fa-duotone fa-solid fa-rotate-right"></i>&nbsp;Reset</button>
                                 </div>
-
                             </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Test Form Card (Loaded Dynamically Below) -->
+            <div id="testFormCard" style="display: none;" class="row justify-content-center mt-4">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Test Details</h5>
+                            <div id="testFormContent">
+                                <!-- Form will be loaded here via AJAX -->
+                            </div>
                         </div>
                     </div>
                 </div>
