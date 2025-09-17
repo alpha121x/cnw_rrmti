@@ -54,14 +54,6 @@ if (!isset($_SESSION['username'])) {
     <link href="assets/css/custom-style.css" rel="stylesheet">
 </head>
 
-<style>
-    .signature {
-        font-family: "Brush Script MT", cursive;
-        font-size: 20px;
-        color: #000;
-    }
-</style>
-
 <body class="toggle-sidebar">
     <div class="loader"></div>
     <?php include("./includes/header.php") ?>
