@@ -15,7 +15,16 @@ $(document).ready(function () {
     const testNo = $("#test_no").val().trim();
     const performerName = $("#performer_name").val().trim();
 
-    const isValid = selectedTest !== "%" && project && client && ref && gr && lab && receivingDate && testNo && performerName;
+    const isValid =
+      selectedTest !== "%" &&
+      project &&
+      client &&
+      ref &&
+      gr &&
+      lab &&
+      receivingDate &&
+      testNo &&
+      performerName;
     $("#loadTestFormBtn").prop("disabled", !isValid);
   });
 
@@ -259,28 +268,28 @@ $(document).ready(function () {
     const modalFooter = $("#reportModal .modal-footer1");
     modalFooter.empty(); // Clear existing footer if any
     modalFooter.append(`
-    <div class="row mt-4">
+      <div class="row mt-4">
         <div class="col-12">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="text-center flex-fill">
-                    <div class="fw-bold">Laboratory Assistant</div>
-                    <div class="small-note">(Signature)</div>
-                </div>
-                <div class="text-center flex-fill">
-                    <div class="fw-bold">Research Assistant</div>
-                    <div class="small-note">(Signature)</div>
-                </div>
-                <div class="text-center flex-fill">
-                    <div class="fw-bold">Junior Research Officer</div>
-                    <div class="small-note">(Signature)</div>
-                </div>
-                <div class="text-center flex-fill">
-                    <div class="fw-bold">Senior Research Officer</div>
-                    <div class="small-note">(Signature)</div>
-                </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="text-center flex-fill">
+              <div class="fw-bold">Laboratory Assistant</div>
+              <div class="signature mt-2">Test Signature</div>
             </div>
+            <div class="text-center flex-fill">
+              <div class="fw-bold">Research Assistant</div>
+              <div class="signature mt-2">Test Signature</div>
+            </div>
+            <div class="text-center flex-fill">
+              <div class="fw-bold">Junior Research Officer</div>
+              <div class="signature mt-2">Test Signature</div>
+            </div>
+            <div class="text-center flex-fill">
+              <div class="fw-bold">Senior Research Officer</div>
+              <div class="signature mt-2">Test Signature</div>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
 `);
 
     // Show modal
@@ -313,100 +322,96 @@ $(document).ready(function () {
   // Initial load of records is handled by DataTable initialization
 });
 
-
 $.fn.fill_sections = function (callback) {
+  let $dropdown = $("#cmb_section");
+  // empty the select box
+  $dropdown.empty();
+  // append first option and make it disabled so user cannot select first option
+  $dropdown.append($("<option />").val("%").text("Select Section"));
+  // sets selected index to first item using jQuery
+  $dropdown.prop("selectedIndex", 0);
+  // url of service file
+  const url = "services/select_sections.php";
+  // passing parameter
+  // let param = {
+  //     "division_id" : division_id,
+  // };
+  // get json data
+  $.getJSON(url, function (response) {
+    // execute each method until response.length
+    // console.log(response);
 
-    let $dropdown = $("#cmb_section");
-    // empty the select box
-    $dropdown.empty();
-    // append first option and make it disabled so user cannot select first option
-    $dropdown.append($('<option />').val('%').text('Select Section'));
-    // sets selected index to first item using jQuery
-    $dropdown.prop("selectedIndex", 0);
-    // url of service file
-    const url = "services/select_sections.php";
-    // passing parameter
-    // let param = {
-    //     "division_id" : division_id,
-    // };
-    // get json data
-    $.getJSON(url, function (response) {
-        // execute each method until response.length
-        // console.log(response);
-
-        $.each(response, function (key, data) {
-            // append more options coming form database
-            $dropdown.append($('<option />').val(data.id).text(data.section_name));
-        });
-        // Execute the callback if provided
-        if (typeof callback === 'function') {
-            callback();
-        }
+    $.each(response, function (key, data) {
+      // append more options coming form database
+      $dropdown.append($("<option />").val(data.id).text(data.section_name));
     });
-}
+    // Execute the callback if provided
+    if (typeof callback === "function") {
+      callback();
+    }
+  });
+};
 
-$.fn.fill_sub_section = function (section_id,callback) {
-
-    let $dropdown = $("#cmb_sub_section");
-    // empty the select box
-    $dropdown.empty();
-    // append first option and make it disabled so user cannot select first option
-    $dropdown.append($('<option />').val('%').text('Select Sub Section'));
-    // sets selected index to first item using jQuery
-    $dropdown.prop("selectedIndex", 0);
-    // url of service file
-    const url = "services/select_sub_sections.php";
-    // passing parameter
-    let param = {
-        "section_id" : section_id,
-    };
-    // get json data
-    $.getJSON(url, param, function (response) {
-        // execute each method until response.length
-        //  console.log(response);
-        $.each(response, function (key, data) {
-            // append more options coming form database
-            $dropdown.append($('<option />').val(data.id).text(data.sub_sec_name));
-        });
-        // Execute the callback if provided
-        if (typeof callback === 'function') {
-            callback();
-        }
+$.fn.fill_sub_section = function (section_id, callback) {
+  let $dropdown = $("#cmb_sub_section");
+  // empty the select box
+  $dropdown.empty();
+  // append first option and make it disabled so user cannot select first option
+  $dropdown.append($("<option />").val("%").text("Select Sub Section"));
+  // sets selected index to first item using jQuery
+  $dropdown.prop("selectedIndex", 0);
+  // url of service file
+  const url = "services/select_sub_sections.php";
+  // passing parameter
+  let param = {
+    section_id: section_id,
+  };
+  // get json data
+  $.getJSON(url, param, function (response) {
+    // execute each method until response.length
+    //  console.log(response);
+    $.each(response, function (key, data) {
+      // append more options coming form database
+      $dropdown.append($("<option />").val(data.id).text(data.sub_sec_name));
     });
-}
+    // Execute the callback if provided
+    if (typeof callback === "function") {
+      callback();
+    }
+  });
+};
 
 $.fn.fill_tests = function (callback) {
+  let $dropdown = $("#cmb_test");
+  // empty the select box
+  $dropdown.empty();
+  // append first option and make it disabled so user cannot select first option
+  $dropdown.append($("<option />").val("%").text("Select Test"));
+  // sets selected index to first item using jQuery
+  $dropdown.prop("selectedIndex", 0);
+  // url of service file
+  const url = "services/select_tests.php";
+  // passing parameter
+  // let param = {
+  //     "division_id" : division_id,
+  // };
+  // get json data
+  $.getJSON(url, function (response) {
+    // execute each method until response.length
+    // console.log(response);
 
-    let $dropdown = $("#cmb_test");
-    // empty the select box
-    $dropdown.empty();
-    // append first option and make it disabled so user cannot select first option
-    $dropdown.append($('<option />').val('%').text('Select Test'));
-    // sets selected index to first item using jQuery
-    $dropdown.prop("selectedIndex", 0);
-    // url of service file
-    const url = "services/select_tests.php";
-    // passing parameter
-    // let param = {
-    //     "division_id" : division_id,
-    // };
-    // get json data
-    $.getJSON(url, function (response) {
-        // execute each method until response.length
-        // console.log(response);
-
-        $.each(response, function (key, data) {
-            // append more options coming form database
-            $dropdown.append($('<option />').val(data.id).text(data.test_name));
-        });
-        // Execute the callback if provided
-        // if (typeof callback === 'function') {
-        //     callback();
-        // }
+    $.each(response, function (key, data) {
+      // append more options coming form database
+      $dropdown.append($("<option />").val(data.id).text(data.test_name));
     });
-}
+    // Execute the callback if provided
+    // if (typeof callback === 'function') {
+    //     callback();
+    // }
+  });
+};
 
-$("#cmb_section").on('change', function(){
-    let section_id = $(this).val();
-    $.fn.fill_sub_section(section_id);
+$("#cmb_section").on("change", function () {
+  let section_id = $(this).val();
+  $.fn.fill_sub_section(section_id);
 });
