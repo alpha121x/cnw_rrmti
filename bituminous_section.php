@@ -121,7 +121,7 @@ if (!isset($_SESSION['username'])) {
                                     </div>
                                     <div class="col-md-6">
                                         <label for="cmb_sub_section" class="form-label">Sub Section <span class="text-danger">*</span></label>
-                                        <select class="form-select" id="cmb_sub_section" name="cmb_sub_section" disabled>
+                                        <select class="form-select" id="cmb_sub_section" name="cmb_sub_section">
                                             <option value="%">Select Sub Section</option>
                                         </select>
                                     </div>

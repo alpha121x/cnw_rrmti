@@ -312,3 +312,101 @@ $(document).ready(function () {
 
   // Initial load of records is handled by DataTable initialization
 });
+
+
+$.fn.fill_sections = function (callback) {
+
+    let $dropdown = $("#cmb_section");
+    // empty the select box
+    $dropdown.empty();
+    // append first option and make it disabled so user cannot select first option
+    $dropdown.append($('<option />').val('%').text('Select Section'));
+    // sets selected index to first item using jQuery
+    $dropdown.prop("selectedIndex", 0);
+    // url of service file
+    const url = "services/select_sections.php";
+    // passing parameter
+    // let param = {
+    //     "division_id" : division_id,
+    // };
+    // get json data
+    $.getJSON(url, function (response) {
+        // execute each method until response.length
+        // console.log(response);
+
+        $.each(response, function (key, data) {
+            // append more options coming form database
+            $dropdown.append($('<option />').val(data.id).text(data.section_name));
+        });
+        // Execute the callback if provided
+        if (typeof callback === 'function') {
+            callback();
+        }
+    });
+}
+
+$.fn.fill_sub_section = function (section_id,callback) {
+
+    let $dropdown = $("#cmb_sub_section");
+    // empty the select box
+    $dropdown.empty();
+    // append first option and make it disabled so user cannot select first option
+    $dropdown.append($('<option />').val('%').text('Select Sub Section'));
+    // sets selected index to first item using jQuery
+    $dropdown.prop("selectedIndex", 0);
+    // url of service file
+    const url = "services/select_sub_sections.php";
+    // passing parameter
+    let param = {
+        "section_id" : section_id,
+    };
+    // get json data
+    $.getJSON(url, param, function (response) {
+        // execute each method until response.length
+        //  console.log(response);
+        $.each(response, function (key, data) {
+            // append more options coming form database
+            $dropdown.append($('<option />').val(data.id).text(data.sub_sec_name));
+        });
+        // Execute the callback if provided
+        if (typeof callback === 'function') {
+            callback();
+        }
+    });
+}
+
+$.fn.fill_tests = function (callback) {
+
+    let $dropdown = $("#cmb_test");
+    // empty the select box
+    $dropdown.empty();
+    // append first option and make it disabled so user cannot select first option
+    $dropdown.append($('<option />').val('%').text('Select Test'));
+    // sets selected index to first item using jQuery
+    $dropdown.prop("selectedIndex", 0);
+    // url of service file
+    const url = "services/select_tests.php";
+    // passing parameter
+    // let param = {
+    //     "division_id" : division_id,
+    // };
+    // get json data
+    $.getJSON(url, function (response) {
+        // execute each method until response.length
+        // console.log(response);
+
+        $.each(response, function (key, data) {
+            // append more options coming form database
+            $dropdown.append($('<option />').val(data.id).text(data.test_name));
+        });
+        // Execute the callback if provided
+        // if (typeof callback === 'function') {
+        //     callback();
+        // }
+    });
+}
+
+$("#cmb_section").on('change', function(){
+    let section_id = $(this).val();
+    $.fn.fill_sub_section(section_id);
+});
