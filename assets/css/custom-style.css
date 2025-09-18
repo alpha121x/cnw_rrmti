@@ -37,32 +37,43 @@ body {
     box-shadow: rgba(32, 48, 79, 0.5) 0 7px 29px;
 }
 .card-pro {
-    border: 1px solid #e0e0e0;
-    border-radius: 1rem;
-    background: #dcdcdc;
-    box-shadow: rgba(32, 48, 79, 0.5) 0 7px 10px;
-    transition: all .3s ease;
-    text-decoration: none;
-    color: inherit;
-    display: block;
+    /*max-width: 260px;              !* slimmer card *!*/
+    margin: 0 auto;                /* center inside col */
+    border: 1px solid #bdbdbd;     /* 🔹 light grey border */
+    border-radius: 14px;
+    padding: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: auto !important;
+    min-height: 200px;
+}
+
+.card-pro .card-body {
+    padding: 10px 6px;             /* tighter spacing */
+}
+
+.card-pro .card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 8px;
 }
 
 .card-pro:hover {
     background: linear-gradient(135deg, #ffffff, #f8fbff); /* light subtle glow */
-    transform: translateY(-6px);
+    transform: translateY(-5px);
     box-shadow: 0 10px 24px rgba(0,0,0,.12);
-    border-color: #cfd8ff;
+    border-color: #0346b4;
 }
 
-/* ----------- TOP BAR ----------- */
+/* --- TOP BAR --- */
 .card-topbar {
-    height: 84px;
+    height: 70px;
     background: #e8e8e8;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
 }
 
-/* ----------- LOGO CIRCLE ----------- */
+/* -- LOGO CIRCLE -- */
 .logo-circle {
     width: 72px;
     height: 72px;
@@ -76,7 +87,7 @@ body {
     box-shadow: 0 6px 16px rgba(65,84,241,.3);
     transition: all .3s ease;
 }
-
+/*-----------------------------------------------------------------------------*/
 .bg-custom{
     background: linear-gradient(135deg, #187c5a, #25c58a);
 }

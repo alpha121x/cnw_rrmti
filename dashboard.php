@@ -62,12 +62,12 @@ if (!isset($_SESSION['username'])) {
 
   <main id="main" class="main">
     <section class="section dashboard">
-        <div class="container py-3">
+        <div class="container-fluid py-3">
             <div class="mb-4">
                 <h4 class="fw-bold mb-1 h4-blue">Functional Units</h4>
             </div>
 
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="row  gx-4 gy-3">
                 <!-- Card 1 -->
                 <div class="col">
                     <a href="aggregate_section.php" class="card card-pro h-100 text-center">
@@ -85,7 +85,7 @@ if (!isset($_SESSION['username'])) {
                         <div class="card-topbar"></div>
                         <div class="logo-circle"><i class="fa-duotone fa-solid fa-road"></i></div>
                         <div class="card-body">
-                            <h5 class="card-title">Bituminous Mix Design Section</h5>
+                            <h5 class="card-title">Bituminous Mix Design</h5>
                         </div>
                     </a>
                 </div>
@@ -124,15 +124,15 @@ if (!isset($_SESSION['username'])) {
                 </div>
 
                 <!-- Card 6 -->
-                <div class="col">
-                    <a href="#" class="card card-pro h-100 text-center">
-                        <div class="card-topbar"></div>
-                        <div class="logo-circle bg-custom"><i class="fa-duotone fa-solid fa-window-frame-open"></i></div>
-                        <div class="card-body">
-                            <h5 class="card-title">One Window</h5>
-                        </div>
-                    </a>
-                </div>
+<!--                <div class="col-md-3">-->
+<!--                    <a href="#" class="card card-pro h-100 text-center">-->
+<!--                        <div class="card-topbar"></div>-->
+<!--                        <div class="logo-circle bg-custom"><i class="fa-duotone fa-solid fa-window-frame-open"></i></div>-->
+<!--                        <div class="card-body">-->
+<!--                            <h5 class="card-title">One Window</h5>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
             </div>
         </div>
     </section>
