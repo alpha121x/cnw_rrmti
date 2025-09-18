@@ -2,12 +2,6 @@
 // bitumen_grade_60_70_form.php
 // Form for Bitumen Grade 60-70 Test
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Bitumen Grade 60-70 Test</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
       background: #f8f9fa;
@@ -40,9 +34,6 @@
       width: 200px;
     }
   </style>
-</head>
-<body>
-
 <div class="container">
   <div class="form-card">
     <div class="form-header">

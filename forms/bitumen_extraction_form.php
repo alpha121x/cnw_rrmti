@@ -2,8 +2,43 @@
 // bitumen_extraction_form.php
 // Form for Bitumen Extraction Test
 ?>
-<div class="container-fluid">
-    <h1 class="mb-4 text-center">Bitumen Extraction Test</h1>
+  <style>
+    body {
+      background: #f8f9fa;
+    }
+    .form-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+    .form-header {
+      background: #004c6d;
+      color: #fff;
+      padding: 15px;
+      border-radius: 12px 12px 0 0;
+    }
+    .test-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .test-label {
+      flex: 1;
+      font-weight: 500;
+    }
+    .test-input {
+      width: 200px;
+    }
+  </style>
+<div class="container">
+  <div class="form-card">
+    <div class="form-header">
+      <h4 class="mb-0">Bitumen Extraction Test</h4>
+    </div>
     <form id="extractionForm" method="POST">
         
         <!-- Row 1: Location -->
