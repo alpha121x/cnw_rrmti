@@ -1,65 +1,119 @@
 <?php
 // bitumen_grade_80_100_form.php
-// Form for Bitumen Grade 80-100 Test
 ?>
-<div class="container-fluid">
-    <h1 class="mb-4">Bitumen Grade 80-100 Test</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bitumen Grade 80-100 Test</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f8f9fa;
+    }
+    .form-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+    .form-header {
+      background: #005d7f;
+      color: #fff;
+      padding: 15px;
+      border-radius: 12px 12px 0 0;
+    }
+    .test-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .test-label {
+      flex: 1;
+      font-weight: 500;
+    }
+    .test-input {
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="form-card">
+    <div class="form-header">
+      <h4 class="mb-0">Bitumen Grade 80-100 Test</h4>
+    </div>
+
     <form id="grade80100Form" method="POST">
-        <h5 class="mb-3">Test Values (Obtained)</h5>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="foaming" class="form-label">Foaming / Spattering:</label>
-                <input type="text" class="form-control" id="foaming" name="foaming" placeholder="Enter value">
-            </div>
-            <div class="col-md-6">
-                <label for="flash_point" class="form-label">Flash Point (°C):</label>
-                <input type="number" class="form-control" id="flash_point" name="flash_point" step="0.1" placeholder="0">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="penetration" class="form-label">Penetration (0.1mm):</label>
-                <input type="number" class="form-control" id="penetration" name="penetration" step="0.1" placeholder="0">
-            </div>
-            <div class="col-md-6">
-                <label for="softening_point" class="form-label">Softening Point (°C):</label>
-                <input type="number" class="form-control" id="softening_point" name="softening_point" step="0.1" placeholder="0">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="ductility" class="form-label">Ductility (cms):</label>
-                <input type="number" class="form-control" id="ductility" name="ductility" step="0.1" placeholder="0">
-            </div>
-            <div class="col-md-6">
-                <label for="solubility" class="form-label">Solubility (%):</label>
-                <input type="number" class="form-control" id="solubility" name="solubility" step="0.1" placeholder="0">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="specific_gravity" class="form-label">Specific Gravity:</label>
-                <input type="number" class="form-control" id="specific_gravity" name="specific_gravity" step="0.001" placeholder="0">
-            </div>
-            <div class="col-md-6">
-                <label for="loss_on_heating" class="form-label">Loss on Heating (%):</label>
-                <input type="number" class="form-control" id="loss_on_heating" name="loss_on_heating" step="0.1" placeholder="0">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="ductility_residue" class="form-label">Ductility of Residue (cms):</label>
-                <input type="number" class="form-control" id="ductility_residue" name="ductility_residue" step="0.1" placeholder="0">
-            </div>
-            <div class="col-md-6">
-                <label for="penetration_residue" class="form-label">Penetration of Residue (%):</label>
-                <input type="number" class="form-control" id="penetration_residue" name="penetration_residue" step="0.1" placeholder="0">
-            </div>
-        </div>
-        <div class="mb-3">
-            <label for="remarks" class="form-label">Remarks:</label>
-            <textarea class="form-control" id="remarks" name="remarks" rows="3" placeholder="Enter remarks"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+      
+      <!-- Tests -->
+      <div class="test-row">
+        <div class="test-label">Foaming / Spattering</div>
+        <input type="text" class="form-control test-input" name="foaming" placeholder="Enter value">
+      </div>
+
+      <div class="test-row">
+        <div class="test-label">Flash Point (Cleveland Open Cup) °C</div>
+        <input type="number" class="form-control test-input" name="flash_point" step="0.1">
+      </div>
+
+      <div class="test-row">
+        <div class="test-label">Penetration @ 25°C (0.1mm)</div>
+        <input type="number" class="form-control test-input" name="penetration" step="0.1">
+      </div>
+
+      <div class="test-row">
+        <div class="test-label">Softening Point (Ring & Ball) °C</div>
+        <input type="number" class="form-control test-input" name="softening_point" step="0.1">
+      </div>
+
+      <div class="test-row">
+        <div class="test-label">Ductility @ 25°C, 5cm/min, cms</div>
+        <input type="number" class="form-control test-input" name="ductility" step="0.1">
+      </div>
+
+      <div class="test-row">
+        <div class="test-label">Solubility, %</div>
+        <input type="number" class="form-control test-input" name="solubility" step="0.1">
+      </div>
+
+      <div class="test-row">
+        <div class="test-label">Specific Gravity @ 25°C</div>
+        <input type="number" class="form-control test-input" name="specific_gravity" step="0.001">
+      </div>
+
+      <div class="test-row">
+        <div class="test-label">Loss on Heating, 163°C, 5hrs, %</div>
+        <input type="number" class="form-control test-input" name="loss_on_heating" step="0.1">
+      </div>
+
+      <div class="test-row">
+        <div class="test-label">Ductility of Residue @ 25°C, cms</div>
+        <input type="number" class="form-control test-input" name="ductility_residue" step="0.1">
+      </div>
+
+      <div class="test-row">
+        <div class="test-label">Penetration of Residue, % of Original</div>
+        <input type="number" class="form-control test-input" name="penetration_residue" step="0.1">
+      </div>
+
+      <!-- Remarks -->
+      <div class="mt-4">
+        <label for="remarks" class="form-label fw-bold">Remarks</label>
+        <textarea class="form-control" id="remarks" name="remarks" rows="3"></textarea>
+      </div>
+
+      <!-- Submit -->
+      <div class="mt-3 text-end">
+        <button type="submit" class="btn btn-primary px-4">Submit</button>
+      </div>
     </form>
+  </div>
 </div>
+
+</body>
+</html>
