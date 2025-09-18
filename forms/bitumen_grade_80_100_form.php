@@ -79,8 +79,11 @@
         </div>
 
         <!-- Submit -->
-        <div class="mt-3 text-end">
-            <button type="submit" class="btn btn-primary px-4">Submit</button>
+         <div class="row">
+            <div class="col-md-12 text-end">
+                <button type="submit" class="btn btn-primary btn-primary-custom">
+                    <i class="fa-duotone fa-solid fa-paper-plane"></i>&nbsp;Submit</button>
+            </div>
         </div>
     </form>
 </div>
