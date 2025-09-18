@@ -35,73 +35,84 @@ if (!isset($_SESSION['username'])) {
 
   <main id="main" class="main">
     <section class="section dashboard">
-      <div class="container py-2">
-        <h4 class="fw-bold mb-3 h4-blue">Projects Management</h4>
-
-        <!-- Project Form -->
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title">Add New Project</h5>
-            <form id="projectForm">
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label class="form-label">Project Name <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" name="project" required>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Client <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" name="client" required>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label class="form-label">Ref # <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" name="ref" required>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">GR # <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" name="gr" required>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label class="form-label">Lab # <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" name="lab" required>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Receiving Date <span class="text-danger">*</span></label>
-                  <input type="date" class="form-control" name="receiving_date" required>
-                </div>
-              </div>
-              <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary">
-                  <i class="fa-duotone fa-solid fa-paper-plane"></i> Save Project
-                </button>
-              </div>
-            </form>
-          </div>
+        <div class="container py-2 d-flex justify-content-between">
+            <div class="mb-2">
+                <h4 class="fw-bold mb-1 h4-blue">New Project Information</h4>
+            </div>
+            <div>
+                <a href="dashboard.php" class="btn btn-outline-primary btn-sm">
+                    <i class="fa-duotone fa-solid fa-turn-down-left"></i> Back to Main
+                </a>
+            </div>
         </div>
+        <div class="container py-2">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Add New Project</h5>
+                            <form id="projectForm">
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                        <label class="form-label">Project Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="project" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Client <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="client" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Receiving Date <span class="text-danger">*</span></label>
+                                        <input type="date" class="form-control" name="receiving_date" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label">Lab # <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="lab" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Ref # <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="ref" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">GR # <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="gr" required>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary btn-primary-custom">
+                                        <i class="fa-duotone fa-solid fa-paper-plane "></i> Save Project
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <!-- Projects Table -->
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Saved Projects</h5>
-            <table id="projectsTable" class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th>Project</th>
-                  <th>Client</th>
-                  <th>Ref #</th>
-                  <th>GR #</th>
-                  <th>Lab #</th>
-                  <th>Receiving Date</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
+            <!-- Projects Table -->
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Saved Projects</h5>
+                <table id="projectsTable" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>Project</th>
+                      <th>Client</th>
+                      <th>Ref #</th>
+                      <th>GR #</th>
+                      <th>Lab #</th>
+                      <th>Receiving Date</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
         </div>
-      </div>
     </section>
   </main>
 

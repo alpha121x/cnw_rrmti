@@ -200,8 +200,6 @@ if (!isset($_SESSION['username'])) {
                     </div>
                 </div>
             </div>
-
-
         </section>
     </main><!-- End #main -->
 

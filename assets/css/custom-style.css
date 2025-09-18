@@ -171,7 +171,8 @@ body {
     color: var(--accent);
 }
 
-/*---------- datatable ----------*/
+/*-------------------------- datatable --------------------------*/
+/*---dtRecords_wrapper---*/
 /* Reduce font size in DataTable */
 #dtRecords_wrapper,
 #dtRecords_wrapper table.dataTable,
@@ -193,6 +194,31 @@ body {
     font-size: 0.8rem;
     padding: 2px 8px;  /
 }
+/*---projectsTable_wrapper---*/
+/* Reduce font size in DataTable */
+#projectsTable_wrapper,
+#projectsTable_wrapper table.dataTable,
+#projectsTable_wrapper .dataTables_info,
+#projectsTable_wrapper .dataTables_paginate,
+#projectsTable_wrapper .dataTables_length,
+#projectsTable_wrapper .dataTables_filter {
+    font-size: 0.8rem;
+}
+
+/* Optional: also shrink table cells */
+#projectsTable_wrapper table.dataTable th,
+#projectsTable_wrapper table.dataTable td {
+    font-size: 0.8rem;
+    padding: 6px 8px;
+}
+/* Pagination font size fix */
+#projectsTable_wrapper .dataTables_paginate .pagination .page-link {
+    font-size: 0.8rem;
+    padding: 2px 8px;  /
+}
+
+/*---------------------------------------------------*/
+
 
 /*---custom button---*/
 .btn-primary-custom{
@@ -237,4 +263,47 @@ body {
 
 .form-label{
     font-weight: bold;
+}
+
+/*------------scroll style----------------------*/
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #b0b0b0;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #696969;
+}
+
+.bg-custom-primary{
+    /*background: #e4effd;*/
+    background: #E9ECEF;
+}
+/*--------------------------------------------------------*/
+.table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.table th,
+.table td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    vertical-align: middle;
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6;
 }

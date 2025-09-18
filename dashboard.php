@@ -78,7 +78,7 @@ if (!isset($_SESSION['username'])) {
                             </div>
                             <h5 class="card-title">Create New Project</h5>
                             <p class="card-text text-muted">Start a new project by adding basic details</p>
-                            <a href="#" class="btn btn-primary btn-primary-custom">
+                            <a href="projects.php" class="btn btn-primary btn-primary-custom">
                                 <i class="fa-duotone fa-solid fa-rocket-launch"></i>&nbsp;Get Started</a>
                         </div>
                     </div>
