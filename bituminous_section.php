@@ -67,7 +67,7 @@ if (!isset($_SESSION['username'])) {
                 </div>
                 <div>
                     <a href="dashboard.php" class="btn btn-outline-primary btn-sm">
-                        <i class="fa-duotone fa-solid fa-circle-arrow-left"></i> Back to Main
+                        <i class="fa-duotone fa-solid fa-turn-down-left"></i> Back to Main
                     </a>
                 </div>
             </div>

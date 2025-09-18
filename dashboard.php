@@ -62,12 +62,36 @@ if (!isset($_SESSION['username'])) {
 
   <main id="main" class="main">
     <section class="section dashboard">
+
+
+
         <div class="container-fluid py-3">
+            <div class="mb-4">
+                <h4 class="fw-bold mb-1 h4-blue">Project Task</h4>
+            </div>
+            <div class="row gx-4 gy-3">
+                <div class="col">
+                    <div class="card new-project-card text-center">
+                        <div class="card-body">
+                            <div class="icon-circle mb-3">
+                                <i class="fa-duotone fa-solid fa-circle-plus"></i>
+                            </div>
+                            <h5 class="card-title">Create New Project</h5>
+                            <p class="card-text text-muted">Start a new project by adding basic details</p>
+                            <a href="#" class="btn btn-primary btn-primary-custom">
+                                <i class="fa-duotone fa-solid fa-rocket-launch"></i>&nbsp;Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
             <div class="mb-4">
                 <h4 class="fw-bold mb-1 h4-blue">Functional Units</h4>
             </div>
 
-            <div class="row  gx-4 gy-3">
+            <div class="row gx-4 gy-3">
                 <!-- Card 1 -->
                 <div class="col">
                     <a href="aggregate_section.php" class="card card-pro h-100 text-center">
