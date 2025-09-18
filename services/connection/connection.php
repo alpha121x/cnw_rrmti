@@ -5,11 +5,11 @@
 // $user = "postgres";
 // $password = "diamondx";
 
-$host = "localhost";
-$port = "5433";
-$dbname = "db_cnw_rrmti_lms";
+$host = "172.20.82.25";
+$port = "5432";
+$dbname = "db_cnw_research_labs";
 $user = "postgres";
-$password = "1234";
+$password = "diamondx";
 
 try {
 

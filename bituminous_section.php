@@ -61,7 +61,7 @@ if (!isset($_SESSION['username'])) {
 
     <main id="main" class="main">
         <section class="section dashboard">
-            <div class="container-fluid py-2 d-flex justify-content-between">
+            <div class="container py-2 d-flex justify-content-between">
                 <div class="mb-2">
                     <h4 class="fw-bold mb-1 h4-blue">Bituminous Section</h4>
                 </div>
@@ -71,7 +71,7 @@ if (!isset($_SESSION['username'])) {
                     </a>
                 </div>
             </div>
-            <div class="container py-4">
+            <div class="container py-2">
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
                         <div class="card">
@@ -156,8 +156,8 @@ if (!isset($_SESSION['username'])) {
                                     <div class="d-flex justify-content-end">
                                         <button type="button" id="loadTestFormBtn" class="btn btn-primary btn-primary-custom" disabled>
                                             <i class="fa-duotone fa-solid fa-file-lines"></i>&nbsp;Load Test Form</button>
-                                        <button type="reset" class="btn btn-secondary ms-2">
-                                            <i class="fa-duotone fa-solid fa-rotate-right"></i>&nbsp;Reset</button>
+<!--                                        <button type="reset" class="btn btn-secondary ms-2">-->
+<!--                                            <i class="fa-duotone fa-solid fa-rotate-right"></i>&nbsp;Reset</button>-->
                                     </div>
                                 </form>
                             </div>
@@ -165,28 +165,24 @@ if (!isset($_SESSION['username'])) {
                     </div>
                 </div>
                 <!-- Test Form Card (Loaded Dynamically Below) -->
-                <div id="testFormCard" style="display: none;" class="row justify-content-center mt-4">
+                <div id="testFormCard" style="display: none;" class="row justify-content-center mt-2">
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Test Details</h5>
-                                <div id="testFormContent">
-                                    <!-- Form will be loaded here via AJAX -->
-                                </div>
+                            <div class="card-body" id="testFormContent">
+
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section class="section dashboard">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Test Records</h5>
-                            <table id="dtRecords" class="table table-bordered table-striped">
-                                <thead>
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Test Records</h5>
+                                <table id="dtRecords" class="table table-bordered table-striped">
+                                    <thead>
                                     <tr>
                                         <th>Section</th>
                                         <th>Sub Section</th>
@@ -196,13 +192,16 @@ if (!isset($_SESSION['username'])) {
                                         <th>Comments</th>
                                         <th>View Report</th>
                                     </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </section>
     </main><!-- End #main -->
 

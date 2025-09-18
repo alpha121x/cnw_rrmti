@@ -187,3 +187,12 @@ body {
         font-size: 20px;
         color: #000;
     }
+
+.form-control, .form-select{
+    border: 1px solid #a1a1a1;
+    border-radius: 0;
+}
+
+.form-label{
+    font-weight: bold;
+}
