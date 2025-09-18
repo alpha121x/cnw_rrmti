@@ -76,16 +76,16 @@
                 <label for="sieve_no8" class="form-label">No.8</label>
                 <input type="number" class="form-control" id="sieve_no8" name="sieve_no8" step="0.1" placeholder="0">
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <label for="sieve_no50" class="form-label">No.50</label>
                 <input type="number" class="form-control" id="sieve_no50" name="sieve_no50" step="0.1" placeholder="0">
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <label for="sieve_no200" class="form-label">No.200</label>
                 <input type="number" class="form-control" id="sieve_no200" name="sieve_no200" step="0.1" placeholder="0">
             </div>
-            <div class="col-md-2">
-                <label for="asphalt_content" class="form-label">Asphalt %</label>
+            <div class="col-md-3">
+                <label for="asphalt_content" class="form-label">Asphalt Content % by Weight of</label>
                 <input type="number" class="form-control" id="asphalt_content" name="asphalt_content" step="0.1" placeholder="0">
             </div>
         </div>
