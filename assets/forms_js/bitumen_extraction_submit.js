@@ -1,24 +1,21 @@
-// bitumen_extraction_submit.js
-// Submission handler for Bitumen Extraction Test Form
+// bitumen_extraction_validation.js
+// Validation for Bitumen Extraction Test Form
 
-function submitExtractionForm(form) {
-    const formData = new FormData(form);
-    formData.append('test_type', 'Bitumen Extraction'); // Add test type for process.php
-    fetch('services/process_bituminous.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === "success") {
-            alert(data.message);
-            form.reset();
-        } else {
-            alert(data.message);
+function validateExtraction() {
+    const requiredFields = ['location', 'asphalt_content'];
+    for (let field of requiredFields) {
+        if (!document.getElementById(field).value.trim()) {
+            alert(`Please fill in ${field.replace('_', ' ')}`);
+            return false;
         }
-    })
-    .catch(error => {
-        alert('Error: ' + error.message);
-    });
-    return false;
+    }
+    const numericFields = ['sieve_1', 'sieve_3_4', 'sieve_1_2', 'sieve_3_8', 'sieve_no4', 'sieve_no8', 'sieve_no50', 'sieve_no200', 'asphalt_content'];
+    for (let field of numericFields) {
+        const value = document.getElementById(field).value;
+        if (value && (isNaN(value) || value < 0)) {
+            alert(`${field.replace('_', ' ')} must be a non-negative number`);
+            return false;
+        }
+    }
+    return true;
 }
