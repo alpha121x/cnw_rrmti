@@ -19,14 +19,17 @@ $(document).ready(function () {
         orderable: false,
         searchable: false,
         render: function (data, type, row) {
-          return `
-            <button class="btn btn-sm btn-info view-details me-1">
-              <i class="fa-duotone fa-eye"></i>
-            </button>
-             <button class="btn btn-sm btn-danger view-pdf" data-pdf="http://localhost/cnw_rrmti/${row.letter_document}">
-              <i class="fa-duotone fa-file-pdf"></i>
-            </button>
-          `;
+        return `
+  <div class="d-flex gap-1">
+    <button class="btn btn-sm btn-info view-details">
+      <i class="fa-duotone fa-eye"></i>
+    </button>
+    <button class="btn btn-sm btn-danger view-pdf" data-pdf="http://localhost/cnw_rrmti/${row.letter_document}">
+      <i class="fa-duotone fa-file-pdf"></i>
+    </button>
+  </div>
+`;
+
         },
       },
     ],
