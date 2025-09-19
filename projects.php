@@ -52,7 +52,7 @@ if (!isset($_SESSION['username'])) {
                             <div class="card-body">
                                 <h5 class="card-title">Add New Project</h5>
                                 <form id="projectForm"
-                                    action="services/save_project.php"enctype="multipart/form-data"  method="POST">
+                                    action="services/save_project.php" enctype="multipart/form-data" method="POST">
                                     <div class="row mb-3">
                                         <div class="col-md-12">
                                             <label class="form-label">Project Name <span class="text-danger">*</span></label>
@@ -131,10 +131,71 @@ if (!isset($_SESSION['username'])) {
                                     <th>Focal Person</th>
                                     <th>District</th>
                                     <th>Date Time</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
                         </table>
+
+
+                        <div class="modal fade" id="projectDetailsModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Project Details</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th>Project</th>
+                                                <td id="modalProjectName"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Client</th>
+                                                <td id="modalClientName"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Site Address</th>
+                                                <td id="modalSiteAddress"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Focal Person</th>
+                                                <td id="modalFocalPerson"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Contact No</th>
+                                                <td id="modalContactNo"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Officer ID</th>
+                                                <td id="modalOfficerId"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>District</th>
+                                                <td id="modalDistrict"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Ref Letter No</th>
+                                                <td id="modalRefLetter"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Created By</th>
+                                                <td id="modalCreatedBy"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Date Time</th>
+                                                <td id="modalDateTime"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>
