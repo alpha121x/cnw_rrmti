@@ -11,6 +11,12 @@ $dbname = "db_cnw_research_labs";
 $user = "postgres";
 $password = "diamondx";
 
+$host = "localhost";
+$port = "5433";
+$dbname = "db_cnw_research_labs";
+$user = "postgres";
+$password = "1234";
+
 try {
 
     $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
