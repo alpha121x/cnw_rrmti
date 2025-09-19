@@ -18,14 +18,28 @@ $(document).ready(function () {
         data: null,
         orderable: false,
         searchable: false,
-        render: function () {
-          return `<button class="btn btn-sm btn-info view-details">
-  <i class="fa-duotone fa-eye"></i>
-</button>
-`;
+        render: function (data, type, row) {
+          return `
+            <button class="btn btn-sm btn-info view-details me-1">
+              <i class="fa-duotone fa-eye"></i>
+            </button>
+             <button class="btn btn-sm btn-danger view-pdf" data-pdf="http://localhost/cnw_rrmti/${row.letter_document}">
+              <i class="fa-duotone fa-file-pdf"></i>
+            </button>
+          `;
         },
       },
     ],
+  });
+
+  // Handle view PDF click
+  $(document).on("click", ".view-pdf", function () {
+    const pdfPath = $(this).data("pdf");
+    if (pdfPath) {
+      window.open(pdfPath, "_blank"); // open PDF in new tab
+    } else {
+      alert("No PDF available for this project.");
+    }
   });
 
   // Handle view details click
